@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plano de implementação Shopify — Scalon</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site"><div class="wrap hbar">
+  <a class="logo" href="index.html" aria-label="Scalon — página inicial"><img src="https://www.scalon.com.br/cdn/shop/files/Scalon_marca-WEB_horizontal-removebg-preview.png?v=1676568870&width=300" srcset="https://www.scalon.com.br/cdn/shop/files/Scalon_marca-WEB_horizontal-removebg-preview.png?v=1676568870&width=150 150w, https://www.scalon.com.br/cdn/shop/files/Scalon_marca-WEB_horizontal-removebg-preview.png?v=1676568870&width=300 300w, https://www.scalon.com.br/cdn/shop/files/Scalon_marca-WEB_horizontal-removebg-preview.png?v=1676568870&width=500 500w" sizes="(min-width:900px) 200px, 150px" alt="Scalon" onerror="this.outerHTML='SCALON.'"></a>
+  <nav class="main"><a href="index.html">Protótipo</a><a href="produto.html">PDP</a><a href="colecao.html">PLP</a><a href="outlet.html">Outlet</a></nav>
+</div></header>
+
+<div class="wrap" style="padding-bottom:60px">
+  <div class="crumbs"><a href="index.html">Protótipo</a> / Plano de implementação</div>
+  <h1>Plano de implementação no Shopify</h1>
+  <p style="color:#6f6a66;max-width:720px">Como executar cada mudança dos diagnósticos dentro das limitações do Shopify, mantendo o <b>tema atual</b> (gratuito, já em uso) com customizações pontuais. Nada aqui exige trocar de plataforma nem comprar tema.</p>
+
+  <h2>1. Estratégia: tema atual customizado (custo zero de licença)</h2>
+  <p style="font-size:14.5px;max-width:760px">Mantemos o <b>tema atual</b> — gratuito, rápido, Online Store 2.0 e já instalado — e aplicamos customizações leves de Liquid/CSS/JS só onde o tema sozinho não alcança. O que o tema <b>já entrega de graça</b>: quick-add nos cards (versão atual), filtros facetados via app Search &amp; Discovery, linhas dobráveis na PDP (ideal para medidas inline), busca preditiva, drawer de carrinho, <code>srcset</code> responsivo e seções de slideshow/multicoluna para hero + trust bar. O que precisa de <b>customização pontual</b>: sticky ATC, badge de −%, ordenação por desconto, esgotados no fim e countdown do Outlet — tudo em arquivos isolados (snippets/seções), sem fork do tema, para continuar recebendo atualizações do tema.</p>
+  <div class="proto-note"><b>Limitação central do Shopify:</b> sem plano Plus, o código do checkout <b>não é editável</b> — só via <i>Configurações → Checkout</i> (conta de cliente opcional = checkout convidada), extensões e apps. Por isso frete, parcelamento e confiança precisam aparecer <b>antes</b> do checkout (PDP + carrinho), como faz este protótipo.</div>
+
+  <h2>2. Mudança drástica de categorias (nova taxonomia)</h2>
+  <p style="font-size:14.5px;max-width:760px">Hoje o menu mistura peça + estação (Primavera 27, Calças, Conjuntos…), o que joga a cliente na busca. Nova estrutura em 3 dimensões, com coleções automatizadas por tags:</p>
+  <div class="tscroll">
+  <table class="map">
+    <tr><th>Dimensão</th><th>Coleções (exemplos)</th><th>Regra Shopify</th></tr>
+    <tr><td><b>Por modelagem</b></td><td>Wide Leg · Skinny · Mom · Reta · Flare &amp; Boot Cut · Pantalona · Boyfriend</td><td>Coleção automatizada: <code>tag = fit:wide-leg</code> etc.</td></tr>
+    <tr><td><b>Por ocasião</b></td><td>Trabalho &amp; alfaiataria · Festa &amp; noite · Casual &amp; dia a dia</td><td>Coleção automatizada: <code>tag = ocasiao:trabalho</code> etc.</td></tr>
+    <tr><td><b>Por oportunidade</b></td><td>Novidades · Mais vendidos · Outlet · Últimas peças</td><td>Outlet: <code>compare-at-price &gt; 0</code>; Últimas peças: <code>estoque ≤ 3</code> via Flow ou app</td></tr>
+    <tr><td><b>Roupas (apoio)</b></td><td>Calças · Blusas &amp; camisas · Saias &amp; vestidos · Shorts &amp; bermudas · Conjuntos</td><td>Coleções por tipo de produto (mantém SEO das URLs atuais com redirect)</td></tr>
+  </table>
+  </div>
+  <p style="font-size:13.5px;color:#6f6a66">Preservar as URLs atuais (/collections/calcas etc.) com redirecionamento 301 para não perder SEO. Estações (Primavera 27) viram selo “Nova coleção”, não categoria de menu.</p>
+
+  <h2>3. Cada diagnóstico → onde executar</h2>
+  <div class="tscroll">
+  <table class="map">
+    <tr><th>ID</th><th>Ação do diagnóstico</th><th>Onde vive no protótipo</th><th>Como fazer no Shopify</th></tr>
+    <tr><td><code class="did">D1</code></td><td>Sticky CTA + medidas inline + imagens responsivas</td><td>produto.html (role a página)</td><td><span class="pill liq">Liquid custom</span> snippet sticky ATC (JS+CSS, ~40 linhas) · <span class="pill nat">Tema</span> medidas inline via linha dobrável + metaobject + <code>srcset</code>; limitar banners a 1080–1600px, nunca 4K</td></tr>
+    <tr><td><code class="did">D2</code></td><td>Esgotados no fim da vitrine + Avise-me</td><td>colecao.html / outlet.html</td><td><span class="pill liq">Liquid custom</span> ordenar <code>where: 'available'</code> + concat nos grids; <span class="pill app">App</span> back-in-stock (ex.: Restock Rocket)</td></tr>
+    <tr><td><code class="did">D3</code></td><td>Filtrar bot traffic (China + Singapura)</td><td>— (GA4, sem reflexo visual)</td><td>GA4 → Admin → filtros internos + ativar filtragem de bots; não é tema</td></tr>
+    <tr><td><code class="did">D4</code></td><td>Frete (CEP) + parcelamento na PDP</td><td>produto.html (box de frete, 6x no preço)</td><td><span class="pill app">App</span> calculadora de frete na PDP + texto de parcelas no template de produto; carrinho drawer com barra de frete grátis</td></tr>
+    <tr><td><code class="did">D5</code></td><td>Reviews nos 10 produtos top</td><td>Todas (estrelas + depoimentos)</td><td><span class="pill app">App</span> Judge.me (gratuito); importar avaliações de WhatsApp/e-mail</td></tr>
+    <tr><td><code class="did">D6</code></td><td>Hero com proposta de valor + CTA</td><td>index.html (topo)</td><td><span class="pill nat">Editor do tema</span> — seção slideshow + trust bar; sem código. Banner mobile em crop retrato e <b>sem texto embutido</b> (o texto vai no overlay, como neste protótipo)</td></tr>
+    <tr><td><code class="did">D7</code></td><td>Filtros por fit/tamanho/ocasião</td><td>colecao.html (filtros funcionais)</td><td><span class="pill nat">Tema</span> Search &amp; Discovery com filtros por tag/metafield; taguear catálogo (fit, ocasião)</td></tr>
+    <tr><td><code class="did">D8</code></td><td>Outlet: badge −%, ordenar por desconto, urgência</td><td>outlet.html</td><td><span class="pill liq">Liquid custom</span> badge −% (snippet price), sort por % OFF e seção countdown; quick-add do card (<span class="pill nat">Tema</span>)</td></tr>
+    <tr><td><code class="did">D9</code></td><td>Checkout convidada + selos</td><td>Drawer + PDP</td><td><span class="pill nat">Configuração</span> Conta de cliente = opcional; selos via seções do tema (checkout em si não edita sem Plus)</td></tr>
+    <tr><td><code class="did">D10</code></td><td>Recuperação de carrinho em 1h</td><td>Drawer (base)</td><td><span class="pill app">App</span> Klaviyo ou WhatsApp Business (Shopify Inbox + Flow)</td></tr>
+  </table>
+  </div>
+
+  <h2>4. Sequência sugerida</h2>
+  <div class="tscroll">
+  <table class="map">
+    <tr><th>Quando</th><th>Entregas</th></tr>
+    <tr><td><b>Semana 1</b></td><td>Duplicar o tema atual para rascunho de trabalho (loja no ar intacta) · conta de cliente opcional (D9) · filtros GA4 (D3) · taguear top 50 produtos (fit/ocasião) · instalar Judge.me (D5)</td></tr>
+    <tr><td><b>Semana 2</b></td><td>Hero + trust bar no editor (D6) · frete + parcelas na PDP (D4) · snippet sticky ATC + medidas inline (D1) · reordenar esgotados (D2) · publicar a cópia</td></tr>
+    <tr><td><b>Mês 2</b></td><td>Nova taxonomia completa + redirects (D7) · Outlet otimizada (D8) · app de frete + avise-me · medir: /search, tempo na home, add-to-cart mobile</td></tr>
+    <tr><td><b>Mês 3</b></td><td>Fluxos de carrinho abandonado (D10) · iterar pelo GA4 limpo · meta: 0,48% → 1,5% de conversão</td></tr>
+  </table>
+  </div>
+
+  <h2>5. Projeção (ticket R$ 550)</h2>
+  <div class="tscroll">
+  <table class="map">
+    <tr><th>Cenário</th><th>Conversão</th><th>Compras/mês</th><th>Receita/mês</th></tr>
+    <tr><td>Atual</td><td>0,48%</td><td>~8</td><td>R$ 4.400</td></tr>
+    <tr><td>Conservador (D1–D3)</td><td>1,0%</td><td>~17</td><td>R$ 9.350 (+113%)</td></tr>
+    <tr><td>Realista (D1–D6)</td><td>1,5%</td><td>~26</td><td>R$ 14.300 (+225%)</td></tr>
+    <tr><td>Pleno (todas)</td><td>2,0%</td><td>~34</td><td>R$ 18.700 (+325%)</td></tr>
+  </table>
+  </div>
+
+  <p style="margin-top:18px"><a class="btn" href="index.html">← Voltar ao protótipo</a></p>
+</div>
+
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>Scalon</h4><p style="font-size:14px;opacity:.8">Jeans e moda feminina com modelagem para o corpo real, do 34 ao 52.</p></div>
+    <div><h4>Categorias</h4><a href="index.html">Protótipo</a><a href="colecao.html">Mais Vendidos</a><a href="produto.html">Ver PDP modelo</a><a href="outlet.html">Outlet até 50% OFF</a></div>
+    <div><h4>Ajuda</h4><a href="produto.html#guia-medidas">Guia de medidas</a><a href="#">Trocas grátis em 30 dias</a><a href="https://wa.me/5544991461243" target="_blank" rel="noopener">Fale no WhatsApp</a></div>
+    <div><h4>Confiança</h4><a href="#">Loja segura · SSL</a><a href="#">6x sem juros no cartão</a><a href="#">5% OFF no Pix</a></div>
+  </div>
+  <div class="paystrip"><span>Visa</span><span>Mastercard</span><span>Elo</span><span>Pix</span><span>Boleto</span><em>Compra 100% segura · SSL</em></div>
+  <div class="fbottom"><span>© 2026 Scalon · Todos os direitos reservados</span><span><a href="#">Privacidade</a> · <a href="#">Trocas e devoluções</a> · <a href="#">Frete e prazos</a></span></div>
+</div></footer>
+</body>
+</html>

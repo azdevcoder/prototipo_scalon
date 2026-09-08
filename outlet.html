@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Outlet até 50% OFF — Scalon</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<div class="announce" id="announce">
+  <a class="amsg on" href="outlet.html">OUTLET até <b>50% OFF</b> · termina em <b id="count2">--:--:--</b> · <b>6x sem juros</b></a>
+  <a class="amsg" href="https://rastreamento.correios.com.br/app/index.php" target="_blank" rel="noopener">Rastreie o seu pedido →</a>
+</div>
+
+<header class="site">
+  <div class="wrap hbar">
+    <a class="logo" href="index.html" aria-label="Scalon — página inicial"><img src="https://www.scalon.com.br/cdn/shop/files/Scalon_marca-WEB_horizontal-removebg-preview.png?v=1676568870&width=300" srcset="https://www.scalon.com.br/cdn/shop/files/Scalon_marca-WEB_horizontal-removebg-preview.png?v=1676568870&width=150 150w, https://www.scalon.com.br/cdn/shop/files/Scalon_marca-WEB_horizontal-removebg-preview.png?v=1676568870&width=300 300w, https://www.scalon.com.br/cdn/shop/files/Scalon_marca-WEB_horizontal-removebg-preview.png?v=1676568870&width=500 500w" sizes="(min-width:900px) 200px, 150px" alt="Scalon" onerror="this.outerHTML='SCALON.'"></a>
+    <nav class="main">
+      <a href="#" onclick="toggleMega();return false">Categorias ▾</a>
+      <a href="colecao.html">Mais Vendidos</a>
+      <a href="colecao.html">Jeans por modelagem</a>
+      <a href="outlet.html" style="color:#7a2e2e;font-weight:800">Outlet −50%</a>
+    </nav>
+    <div class="hicons">
+      <a class="iconbtn" href="colecao.html" title="Buscar" aria-label="Buscar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></a>
+      <a class="iconbtn" href="#" title="Conta" aria-label="Conta"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></a>
+      <a class="iconbtn" href="#" onclick="openCart();return false" title="Carrinho" aria-label="Carrinho"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2.5 3.5h2.6l2.5 11.4a1 1 0 0 0 1 .8h8.3a1 1 0 0 0 1-.8L20.5 7H6"/></svg><span class="cartcount" style="display:none">0</span></a>
+      <button class="iconbtn" onclick="toggleMega()" title="Menu" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+  <div class="megamenu" id="mega">
+    <div class="wrap megagrid">
+      <div><h4>Jeans por modelagem</h4>
+        <a href="colecao.html">Wide Leg</a><a href="colecao.html">Skinny</a><a href="colecao.html">Mom</a>
+        <a href="colecao.html">Reta</a><a href="colecao.html">Flare &amp; Boot Cut</a><a href="colecao.html">Pantalona</a></div>
+      <div><h4>Por ocasião</h4>
+        <a href="colecao.html">Trabalho &amp; alfaiataria</a><a href="colecao.html">Festa &amp; noite</a><a href="colecao.html">Casual &amp; dia a dia</a></div>
+      <div><h4>Roupas</h4>
+        <a href="colecao.html">Calças</a><a href="colecao.html">Blusas &amp; camisas</a><a href="colecao.html">Saias &amp; vestidos</a>
+        <a href="colecao.html">Shorts &amp; bermudas</a><a href="colecao.html">Conjuntos</a></div>
+      <div><h4>Oportunidades</h4>
+        <a href="colecao.html">Novidades Primavera 27</a><a href="colecao.html">Mais Vendidos</a>
+        <a href="outlet.html" style="color:#7a2e2e;font-weight:800">Outlet até 50% OFF</a><a href="outlet.html">Últimas peças</a></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap" id="conteudo">
+  <div class="crumbs"><a href="index.html">Início</a> / Outlet</div>
+  <h1 style="margin:6px 0 0">Outlet até 50% OFF</h1>
+
+  <!-- <div class="proto-note"><b>Protótipo · Outlet D8.</b> Badge −% = snippet custom no price · ordenação por maior desconto = Liquid custom · countdown único (announce + box, seção custom, relógio central no app.js) · "Adicionar ao Carrinho" = quick-add · esgotados no fim <code class="did">D2</code> · upsell ×3 no drawer = snippet custom leve. Troque a ordenação para testar.</div> -->
+
+  <div class="countbox" role="timer" aria-label="Tempo restante da oferta outlet">A oferta termina em<br><b id="count">--:--:--</b><p>Preços de outlet não voltam · últimas peças por tamanho</p></div>
+
+  <div class="toolbar">
+    <label class="vh" for="sort">Ordenar produtos do outlet</label>
+    <select class="sort" id="sort" onchange="render()" style="margin-left:0">
+      <option value="desc">Ordenar: maior desconto</option>
+      <option value="menor">Menor preço</option>
+      <option value="aval">Melhor avaliados</option>
+    </select>
+  </div>
+  <div class="grid" id="grid" style="padding-bottom:30px"></div>
+</div>
+
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div><h4>Scalon</h4><p style="font-size:14px;opacity:.8">Jeans e moda feminina com modelagem para o corpo real, do 34 ao 52.</p>
+      <div class="news"><input placeholder="Seu melhor e-mail" aria-label="E-mail"><button>Quero 10% OFF</button></div></div>
+    <div><h4>Categorias</h4><a href="index.html">Início</a><a href="colecao.html">Mais Vendidos</a><a href="colecao.html">Jeans por modelagem</a><a href="outlet.html">Outlet até 50% OFF</a></div>
+    <div><h4>Ajuda</h4><a href="produto.html#guia-medidas">Guia de medidas</a><a href="#">Trocas grátis em 30 dias</a><a href="#">Prazos e frete</a><a href="https://wa.me/5544991461243" target="_blank" rel="noopener">Fale no WhatsApp</a></div>
+    <div><h4>Confiança</h4><a href="#">Loja segura · SSL</a><a href="#">6x sem juros no cartão</a><a href="#">5% OFF no Pix</a><a href="plano.html">Plano de implementação</a></div>
+  </div>
+  <div class="paystrip"><span>Visa</span><span>Mastercard</span><span>Elo</span><span>Pix</span><span>Boleto</span><em>Compra 100% segura · SSL</em></div>
+  <div class="fbottom"><span>© 2026 Scalon · Todos os direitos reservados</span><span class="fbottom-links"><a href="#">Privacidade</a><a href="#">Trocas e devoluções</a><a href="#">Frete e prazos</a></span></div>
+</div></footer>
+
+<div class="scrim" id="scrim" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer"><header>Carrinho <button class="iconbtn" onclick="closeCart()">×</button></header>
+  <div class="items"><div class="freebar"><span id="freeMsg"></span><div class="track"><div class="fill" id="freeFill"></div></div></div><div id="cartItems"></div>
+    <div class="upsell"><span>Complete o look</span><div class="urows">
+      <div class="urow"><img loading="lazy" src="https://www.scalon.com.br/cdn/shop/files/332709_524_1_BLUSA_VISCOSE_MANGA_CURTA_COM_RECORTES_SCALON_jpg.jpg?v=1764094213&width=200" alt="Blusa Viscose Manga Curta com Recortes" onerror="this.style.opacity=.2">
+        <div class="ui"><b>Blusa Viscose com Recortes</b><small>R$ 295,20 · 6x sem juros</small></div>
+        <button onclick="addToCart({id:'upsell-blusa-viscose',nome:'Blusa Viscose Manga Curta com Recortes',tam:'M',preco:295.2,qtd:1,img:'https://www.scalon.com.br/cdn/shop/files/332709_524_1_BLUSA_VISCOSE_MANGA_CURTA_COM_RECORTES_SCALON_jpg.jpg?v=1764094213&width=200'})" aria-label="Adicionar Blusa Viscose ao carrinho">Adicionar</button></div>
+      <div class="urow"><img loading="lazy" src="https://www.scalon.com.br/cdn/shop/files/340693696.webp?v=1784227222&width=200" alt="Regata Viscose Alça Larga" onerror="this.style.opacity=.2">
+        <div class="ui"><b>Regata Viscose Alça Larga</b><small>R$ 269,00 · 6x sem juros</small></div>
+        <button onclick="addToCart({id:'upsell-regata-viscose',nome:'Regata Viscose Alça Larga com Elástico',tam:'M',preco:269,qtd:1,img:'https://www.scalon.com.br/cdn/shop/files/340693696.webp?v=1784227222&width=200'})" aria-label="Adicionar Regata Viscose ao carrinho">Adicionar</button></div>
+      <div class="urow"><img loading="lazy" src="https://www.scalon.com.br/cdn/shop/files/332696_520_1_T-SHIRT_MALHA_MANGA_CURTA_ESTAMPADA_COM_TRICOT_SCALON_jpg.jpg?v=1762537560&width=200" alt="T-shirt Malha Estampada" onerror="this.style.opacity=.2">
+        <div class="ui"><b>T-shirt Malha Estampada</b><small>R$ 303,20 · 6x sem juros</small></div>
+        <button onclick="addToCart({id:'upsell-tshirt-malha',nome:'T-shirt Malha Manga Curta Estampada',tam:'M',preco:303.2,qtd:1,img:'https://www.scalon.com.br/cdn/shop/files/332696_520_1_T-SHIRT_MALHA_MANGA_CURTA_ESTAMPADA_COM_TRICOT_SCALON_jpg.jpg?v=1762537560&width=200'})" aria-label="Adicionar T-shirt ao carrinho">Adicionar</button></div>
+    </div></div></div>
+  <footer><div style="display:flex;justify-content:space-between;font-weight:800"><span>Subtotal</span><span id="cartSub">R$ 0,00</span></div>
+  <a class="btn block green" href="#" onclick="alert('Checkout como convidada.');return false">Finalizar compra</a>
+  <small class="uship">Troca grátis em 30 dias · compra 100% segura</small></footer>
+</aside>
+
+<a class="wa-float" href="https://wa.me/5544991461243" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+<script src="app.js"></script>
+<script>
+/* countdown centralizado no app.js (tick atualiza #count e #count2) */
+const P=[
+ {n:'Conjunto Algodão Blusa + Calça Pantcropped',de:929,por:743.2,aval:4.8,nAv:86,off:false,img:'https://www.scalon.com.br/cdn/shop/files/400293_487_1_CONJUNTO_ALGODAO_BLUSA_MANGA_CURTA_E_CALCA_PANTCROPPED_COM_PONTO_CORRENTE_SCALON_REF_INT_400304_jpg.jpg?v=1764088420&width=533'},
+ {n:'Blusa Viscose Manga Curta com Recortes',de:369,por:295.2,aval:4.6,nAv:54,off:false,img:'https://www.scalon.com.br/cdn/shop/files/332709_524_1_BLUSA_VISCOSE_MANGA_CURTA_COM_RECORTES_SCALON_jpg.jpg?v=1764094213&width=533'},
+ {n:'Camisa Algodão Manga Longa Listrada',de:619,por:495.2,aval:4.7,nAv:73,off:false,img:'https://www.scalon.com.br/cdn/shop/files/321411_498_1_CAMISA_ALGODAO_MANGA_LONGA_LISTRADA_COM_BOLSOS_SOBREPOSTOS_SCALON_jpg.jpg?v=1762537007&width=533'},
+ {n:'T-shirt Malha Estampada com Tricot',de:379,por:303.2,aval:4.5,nAv:39,off:false,img:'https://www.scalon.com.br/cdn/shop/files/332696_520_1_T-SHIRT_MALHA_MANGA_CURTA_ESTAMPADA_COM_TRICOT_SCALON_jpg.jpg?v=1762537560&width=533'},
+ {n:'Conjunto Viscose Colete + Bermuda',de:869,por:695.2,aval:4.6,nAv:28,off:true,img:'https://www.scalon.com.br/cdn/shop/files/400293_487_1_CONJUNTO_ALGODAO_BLUSA_MANGA_CURTA_E_CALCA_PANTCROPPED_COM_PONTO_CORRENTE_SCALON_REF_INT_400304_jpg.jpg?v=1764088420&width=533'},
+];
+function render(){
+  const s=document.getElementById('sort').value;
+  let list=[...P];
+  list.forEach(p=>p.d=Math.round((1-p.por/p.de)*100));
+  if(s==='desc')list.sort((a,b)=>b.d-a.d);
+  if(s==='menor')list.sort((a,b)=>a.por-b.por);
+  if(s==='aval')list.sort((a,b)=>b.aval-a.aval);
+  list=[...list.filter(p=>!p.off),...list.filter(p=>p.off)];
+  document.getElementById('grid').innerHTML=list.map(p=>`
+    <div class="card ${p.off?'soldout':''}">
+      ${p.off?'<span class="badge out">Esgotado</span>':`<span class="badge">−${p.d}%</span>`}
+      <a class="ph" href="produto.html" aria-label="Ver ${p.n}"><img loading="lazy" src="${p.img}" alt="${p.n}" onerror="this.style.opacity=.2"></a>
+      <span class="info"><span class="stars">${'★'.repeat(Math.round(p.aval))} <small>${p.aval} · ${p.nAv}</small></span>
+      <a class="tlink" href="produto.html"><h3>${p.n}</h3></a><span class="price"><s>R$ ${p.de.toLocaleString('pt-BR')},00</s>R$ ${p.por.toLocaleString('pt-BR',{minimumFractionDigits:2})}</span>
+      <span class="instl">6x de R$ ${(p.por/6).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})} sem juros</span>
+      ${p.off?`<button class="avise" onclick="alert('Avise-me ativado!')">Avise-me quando chegar</button>`
+             :`<button class="btn ghost" onclick='addToCart({id:"${p.n.slice(0,12)}",nome:"${p.n}",tam:"M",preco:${p.por},qtd:1,img:"${p.img}"})'>Adicionar ao Carrinho</button>`}</span>
+    </div>`).join('');
+}
+render();
+</script>
+</body>
+</html>
