@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Scalon — Apresentação Comercial</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <style>
 :root{
   --brand:#7a2e2e; --brand-d:#5f2222; --ink:#1c1a19; --muted:#57504b;
@@ -53,6 +56,14 @@ tr.dest td{background:#fbeede;font-weight:700}
 .nav-controls{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:1000}
 .nav-btn{background:var(--ink);border:none;color:#fff;width:50px;height:50px;border-radius:50%;cursor:pointer;font-size:20px;font-weight:700}
 .slide-counter{font-family:Arial,Helvetica,sans-serif;color:#fff;font-size:14px;font-weight:700;background:var(--ink);padding:10px 18px;border-radius:999px}
+.dl-wrap{position:fixed;top:18px;right:18px;z-index:1001;font-family:Arial,Helvetica,sans-serif}
+.dl-btn{background:var(--ink);color:#fff;border:none;border-radius:999px;padding:12px 22px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.dl-menu{display:none;position:absolute;top:54px;right:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;min-width:220px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.dl-menu.open{display:block}
+.dl-menu button{display:block;width:100%;text-align:left;background:none;border:0;padding:14px 18px;font-size:15px;cursor:pointer;color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+.dl-menu button:hover{background:var(--sand)}
+body.is-fs .dl-wrap{display:none}
+@media print{body{overflow:visible;background:#fff}.slide-deck{position:static;max-width:none;max-height:none;height:auto}.slide{position:static;opacity:1!important;visibility:visible!important;height:auto;page-break-after:always;padding:24px}.slide-content{max-height:none;overflow:visible}.nav-controls,.progress-bar,.dl-wrap{display:none!important}}
 .foot{font-family:Arial,Helvetica,sans-serif;font-size:13px;color:var(--muted)}
 @media(max-width:768px){.slide{padding:28px 18px}.cols2{grid-template-columns:1fr}.cols3{grid-template-columns:1fr}.cols4{grid-template-columns:1fr 1fr}.duo{grid-template-columns:1fr}table{font-size:13px}}
 </style>
@@ -169,7 +180,7 @@ tr.dest td{background:#fbeede;font-weight:700}
 <tr><td><b>Brevo</b></td><td><b>R$46,44</b></td><td>A mais econômica para vários canais.</td></tr>
 <tr><td><b>Avaliações Yotpo</b></td><td><b>R$77,40</b></td><td>Prova social que aumenta a conversão.</td></tr>
 <tr><td><b>SMS Postscript</b></td><td><b>R$252,84</b> mín.</td><td>Reforço rápido para o carrinho.</td></tr></table>
-<div class="foot">Em anexo: planilha completa com 20 opções em reais — <a href="https://docs.google.com/viewer?url=https%3A%2F%2Fraw.githubusercontent.com%2Fazdevcoder%2Fprototipo_scalon%2Fmain%2Fdocumentos%2Fcomparativo_remarketing_shopify.xlsx&embedded=true" target="_blank" style="color:var(--brand);font-weight:700">abrir no Google Sheets</a> · <a href="https://github.com/azdevcoder/prototipo_scalon/blob/main/documentos/comparativo_remarketing_shopify.xlsx" target="_blank" style="color:var(--brand);font-weight:700">ver no GitHub</a></div>
+<div class="foot">Em anexo: planilha completa com 20 opções em reais — <a href="https://docs.google.com/spreadsheets/d/1WsZPQyZfWrf2U03-6ErKFQvhH-JQEInG/edit?usp=sharing&ouid=106005809153905926107&rtpof=true&sd=true" target="_blank" style="color:var(--brand);font-weight:700">Abrir</a></div>
 </div></div>
 
 <!-- 9 -->
@@ -236,7 +247,7 @@ tr.dest td{background:#fbeede;font-weight:700}
 <!-- 14 -->
 <div class="slide sand"><div class="slide-content">
 <div class="eyebrow">Resumo do investimento</div>
-<h2>Combinado: <strong>R$16.400</strong></h2>
+<h2>Proposta: <strong></strong></h2>
 <table><tr><th>Bloco</th><th>Valor</th><th>Modelo</th></tr>
 <tr><td><b>1 · Melhoria do site</b></td><td><b>R$10.500</b></td><td>Projeto fechado, 90 dias</td></tr>
 <tr><td><b>2 · Remarketing</b></td><td><b>R$5.900</b></td><td>Setup único + ferramentas à parte</td></tr>
@@ -244,11 +255,13 @@ tr.dest td{background:#fbeede;font-weight:700}
 <tr><td>Acompanhamento mensal (opcional)</td><td><b>R$1.500/mês</b></td><td>Evolução contínua</td></tr>
 <tr><td>Hora avulsa</td><td><b>R$320</b></td><td>Demandas pontuais</td></tr>
 <tr class="dest"><td><b>Total combinado</b></td><td><b>R$16.400</b></td><td>Contratação separada por bloco</td></tr></table>
+<div class="foot" style="font-size:14px">Referência de mercado para um projeto deste porte (loja PME, sobre tema existente + automação): <b>R$15 mil a R$28 mil</b> de implantação e <b>R$500 a R$5.500/mês</b> de operação — os valores acima estão dentro da faixa justa, sem inflar.</div>
 <p class="lead">Ganho adicional projetado de R$9,9 mil/mês (de R$4,4 mil para R$14,3 mil). O investimento se paga em cerca de 30 a 60 dias após as primeiras correções. Retorno esperado não garantido. Pagamento e validade a definir.</p>
 </div></div>
 
 </div>
 <div class="nav-controls"><button class="nav-btn" onclick="firstSlide()" title="Início">|←</button><button class="nav-btn" onclick="prevSlide()">←</button><span class="slide-counter"><span id="current">1</span> / <span id="total">11</span></span><button class="nav-btn" onclick="nextSlide()">→</button><button class="nav-btn" onclick="lastSlide()" title="Fim">→|</button></div>
+<div class="dl-wrap"><button class="dl-btn" onclick="toggleDl(event)">Baixar ↓</button><div class="dl-menu" id="dlMenu"><button onclick="downloadPDF()">PDF (arquivo)</button><button onclick="downloadPPTX()">PowerPoint (.pptx)</button></div></div>
 <script>
 let current=1;const total=document.querySelectorAll('.slide').length;document.getElementById('total').textContent=total;
 function showSlide(n){if(n<1)n=1;if(n>total)n=total;current=n;document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===n-1));document.getElementById('current').textContent=n;document.getElementById('progressBar').style.width=(n/total*100)+'%';if(n===6)drawRev();if(n===9)drawMix();}
@@ -259,6 +272,68 @@ let revDone=false;
 function drawRev(){if(revDone)return;revDone=true;new Chart(document.getElementById('revChart'),{type:'bar',data:{labels:['Atual','Ajustes básicos','Site completo','Com recompra'],datasets:[{data:[4400,9350,14300,18700],backgroundColor:['#c9b8ae','#7a2e2e','#1e7e46','#7a2e2e'],borderRadius:8}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#1c1a19',font:{size:13,weight:'bold'}}},y:{ticks:{color:'#57504b',callback:v=>'R$'+(v/1000)+'k'}}}}});}
 let mixDone=false;
 function drawMix(){if(mixDone)return;mixDone=true;new Chart(document.getElementById('mixChart'),{type:'doughnut',data:{labels:['E-mail automático','WhatsApp e SMS','Vendas normais'],datasets:[{data:[18,7,75],backgroundColor:['#7a2e2e','#c96a3b','#e5d9cf'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{position:'right',labels:{boxWidth:14,font:{size:13}}}}}});}
+function toggleDl(e){e.stopPropagation();document.getElementById('dlMenu').classList.toggle('open')}
+document.addEventListener('click',function(e){var m=document.getElementById('dlMenu');if(m&&!e.target.closest('.dl-wrap'))m.classList.remove('open')});
+function downloadPDF(){
+document.getElementById('dlMenu').classList.remove('open');
+if(typeof html2canvas==='undefined'||typeof window.jspdf==='undefined'){alert('Sem conexão com a internet para gerar o PDF.');return}
+var btn=document.querySelector('.dl-btn');var old=btn.textContent;btn.textContent='Gerando PDF...';
+var keep=current;
+function wait(ms){return new Promise(function(res){setTimeout(res,ms)})}
+(async function(){
+try{
+drawRev();drawMix();
+await wait(1300);
+var pdf=new window.jspdf.jsPDF({orientation:'landscape',unit:'in',format:[13.33,7.5]});
+var slides=document.querySelectorAll('.slide');
+for(var i=0;i<slides.length;i++){
+showSlide(i+1);
+await wait(300);
+var cv=await html2canvas(slides[i],{backgroundColor:'#fffdfb',scale:2,useCORS:true,logging:false});
+if(i>0)pdf.addPage([13.33,7.5],'landscape');
+pdf.addImage(cv.toDataURL('image/png'),'PNG',0,0,13.33,7.5);
+}
+pdf.save('Scalon-apresentacao-comercial.pdf');
+}catch(err){alert('Não foi possível gerar o PDF agora. Verifique a conexão. Detalhe: '+err.message)}
+btn.textContent=old;showSlide(keep);
+})();
+}
+function downloadPPTX(){
+document.getElementById('dlMenu').classList.remove('open');
+if(typeof PptxGenJS==='undefined'){alert('Sem conexão com a internet para gerar o PowerPoint. Use a opção PDF.');return}
+var pptx=new PptxGenJS();pptx.layout='LAYOUT_WIDE';pptx.author='Scalon';pptx.title='Scalon — Apresentação Comercial';
+var B='7A2E2E',INK='1C1A19',MUT='57504B',BG='FFFDFB';
+function S(eye,title,items,hl){
+var s=pptx.addSlide();s.background={color:BG};
+s.addText(eye,{x:0.5,y:0.25,w:12.3,h:0.4,fontSize:13,bold:true,color:B,charSpacing:2});
+s.addText(title,{x:0.5,y:0.65,w:12.3,h:1.1,fontSize:32,bold:true,color:INK});
+var y=1.9;
+items.forEach(function(it){s.addText([{text:'•  ',options:{color:B,bold:true}},{text:it,options:{color:MUT}}],{x:0.7,y:y,w:11.9,h:0.6,fontSize:15});y+=0.62;});
+if(hl){s.addText(hl,{x:0.5,y:6.35,w:12.3,h:0.6,fontSize:16,bold:true,color:B});}
+return s;
+}
+S('PROPOSTA COMERCIAL · 2026','O novo site da Scalon, pronto para vender mais',['Do clique à recompra: site + responsividade + remarketing','Meta: conversão de 0,48% para 1,5% (+225% de receita)','90 dias, do ar à escala'],'Scalon · do 34 ao 52 · troca grátis em 30 dias · 6x sem juros');
+S('ONDE ESTAMOS','O site atual perde vendas no celular',['Menu confuso: a cliente se perde e vai para a busca','Banners pesados, sem botão claro','Esgotados no topo, sem avaliações nem parcela visível','Compra exige cliques demais, conta e frete só no final']);
+S('POR QUE MUDAR AGORA','Hoje: 0,48% de conversão',['Cerca de 8 pedidos/mês, em torno de R$4,4 mil','Trava 1: dúvida de tamanho — guia na página + troca grátis','Trava 2: surpresa no frete — cálculo antes do caixa','Trava 3: sem recompra — lembrete de carrinho por e-mail e WhatsApp']);
+S('O QUE MUDA','8 melhorias que destravam a venda',['Compra pelo modelo: Wide Leg, Skinny, Mom, Reta, Flare, Pantalona','Início rápido com botão + faixa de confiança 4,9','Vitrine com filtros, esgotado no fim e compra direta','Produto: parcela, Pix, medidas, frete, botão fixo, look completo','Carrinho com barra de frete grátis + compra como convidada','Outlet com desconto em % e contagem regressiva']);
+S('CELULAR EM PRIMEIRO LUGAR','Confortável de comprar no dedo',['Textos grandes e botões altos, sem zoom','Fotos rápidas no tamanho certo para cada tela','Botão de comprar acompanha a tela','Do celular pequeno ao computador, sem quebrar']);
+var s6=S('PROJEÇÃO COM O MESMO MOVIMENTO','De R$4,4 mil para R$14 a 18 mil por mês',['Atual 0,48%: ~8 pedidos — R$4.400','Ajustes básicos 1,0%: ~17 pedidos — R$9.350','Site completo 1,5%: ~26 pedidos — R$14.300','Com recompra 2,0%: ~34 pedidos — R$18.700']);
+s6.addChart(pptx.charts.BAR,[{name:'Receita R$/mês',labels:['Atual','Básico','Completo','Recompra'],values:[4400,9350,14300,18700]}],{x:6.8,y:1.9,w:5.7,h:4,showTitle:false,showLegend:false});
+S('RECOMPRA AUTOMÁTICA','O cliente volta sozinho',['Lembrete de carrinho em 1h, 24h e 48h — recupera 5 a 11%','Boas-vindas com 10% OFF para quem deixa o e-mail','Pós-venda: rastreio, cuidados e pedido de avaliação','Avise-me de tamanho + retorno de quem sumiu','Por e-mail e WhatsApp, só com autorização (LGPD)']);
+S('QUANTO CUSTA (R$, DÓLAR A R$5,16)','Comece de graça, evolua com o retorno',['Klaviyo R$103,20 — completa para moda','Omnisend R$82,56 — ótima para validar','Brevo R$46,44 — a mais econômica','Shopify Email R$0 (10 mil grátis) — base mínima','Yotpo avaliações R$77,40 + SMS Postscript mín. R$252,84'],'Planilha completa com 20 opções no repositório do projeto');
+S('CAMINHO SUGERIDO','Simples, sem trocar nada',['Fase 1, custo zero: e-mail Shopify + abandono básico','Fase 2, ~R$180/mês: ferramenta de e-mail + avaliações','Fase 3, ao escalar: SMS e WhatsApp no abandono','E-mail automático ~18% + WhatsApp/SMS ~7% da receita']);
+S('SEGURANÇA','Mantém tudo o que já funciona',['Mesma plataforma e mesmo visual, sem obra no caixa','Semanas 1–2: início, vitrine e produto no ar','Mês 2: menu por modelo e outlet','Mês 3: recompra automática e medição'],'Prazo mínimo de 90 dias, podendo se estender caso seja necessário');
+S('PROPOSTA · BLOCO 1','Melhoria do site (sem valores — ver slide final)',['Projeto fechado, 90 dias, 35 a 50 horas','Início, vitrine, produto, outlet e carrinho no tema atual','Loja de teste separada + Google preservado + medição no GA4']);
+S('PROPOSTA · BLOCO 2','Remarketing (sem valores — ver slide final)',['5 fluxos: carrinho, boas-vindas, pós-compra, reposição, retorno','WhatsApp + coleta de avaliações','10 a 15 horas de configuração, testes e guia de operação']);
+S('PRÓXIMO PASSO','Vamos colocar no ar e medir?',['Em 30 dias: diferença no adicionar ao carrinho','Em 90 dias: diferença no faturamento'],'Ver protótipo (index.html) e plano (plano.html)');
+S('RESUMO DO INVESTIMENTO','Combinado: R$16.400',['Bloco 1 · Melhoria do site: R$10.500 (fechado, 90 dias)','Bloco 2 · Remarketing: R$5.900 (setup + ferramentas à parte)','Ferramentas: ~R$180 a R$350/mês, direto aos fornecedores','Acompanhamento opcional R$3.000/mês · Hora avulsa R$320'],'Ganho projetado de R$9,9 mil/mês — retorno não garantido');
+pptx.writeFile({fileName:'Scalon-apresentacao-comercial.pptx'});
+}
+function checkFs(){var fs=(window.innerHeight>=screen.height-5&&window.innerWidth>=screen.width-5)||!!document.fullscreenElement;document.body.classList.toggle('is-fs',fs)}
+window.addEventListener('resize',checkFs);
+document.addEventListener('fullscreenchange',checkFs);
+document.addEventListener('keydown',function(e){if(e.key==='F11'){setTimeout(checkFs,400)}});
+checkFs();
 showSlide(1);
 </script>
 </body>
