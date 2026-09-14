@@ -5,11 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Plano de implementação Shopify — Scalon</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+@media print{
+  header.site, footer.site, .no-print{ display:none !important; }
+  body{ background:#fff; }
+  .wrap{ max-width:100%; }
+  .tscroll{ overflow:visible; }
+  table.map{ min-width:0; font-size:12px; }
+}
+</style>
 </head>
 <body>
 <header class="site"><div class="wrap hbar">
   <a class="logo" href="index.html" aria-label="Scalon — página inicial"><img src="https://www.scalon.com.br/cdn/shop/files/Scalon_marca-WEB_horizontal-removebg-preview.png?v=1676568870&width=300" srcset="https://www.scalon.com.br/cdn/shop/files/Scalon_marca-WEB_horizontal-removebg-preview.png?v=1676568870&width=150 150w, https://www.scalon.com.br/cdn/shop/files/Scalon_marca-WEB_horizontal-removebg-preview.png?v=1676568870&width=300 300w, https://www.scalon.com.br/cdn/shop/files/Scalon_marca-WEB_horizontal-removebg-preview.png?v=1676568870&width=500 500w" sizes="(min-width:900px) 200px, 150px" alt="Scalon" onerror="this.outerHTML='SCALON.'"></a>
-  <nav class="main"><a href="index.html">Protótipo</a><a href="produto.html">PDP</a><a href="colecao.html">PLP</a><a href="outlet.html">Outlet</a></nav>
+  <nav class="main"><a href="index.html">Protótipo</a>
 </div></header>
 
 <div class="wrap" style="padding-bottom:60px">
@@ -55,8 +64,8 @@
   <div class="tscroll">
   <table class="map">
     <tr><th>Quando</th><th>Entregas</th></tr>
-    <tr><td><b>Semana 1</b></td><td>Duplicar o tema atual para rascunho de trabalho (loja no ar intacta) · conta de cliente opcional (D9) · filtros GA4 (D3) · taguear top 50 produtos (fit/ocasião) · instalar Judge.me (D5)</td></tr>
-    <tr><td><b>Semana 2</b></td><td>Hero + trust bar no editor (D6) · frete + parcelas na PDP (D4) · snippet sticky ATC + medidas inline (D1) · reordenar esgotados (D2) · publicar a cópia</td></tr>
+    <tr><td><b>Semana1/2</b></td><td>Duplicar o tema atual para rascunho de trabalho (loja no ar intacta) · conta de cliente opcional (D9) · filtros GA4 (D3) · taguear top 50 produtos (fit/ocasião) · instalar Judge.me (D5)</td></tr>
+    <tr><td><b>Semana3/4</b></td><td>Hero + trust bar no editor (D6) · frete + parcelas na PDP (D4) · snippet sticky ATC + medidas inline (D1) · reordenar esgotados (D2) · publicar a cópia</td></tr>
     <tr><td><b>Mês 2</b></td><td>Nova taxonomia completa + redirects (D7) · Outlet otimizada (D8) · app de frete + avise-me · medir: /search, tempo na home, add-to-cart mobile</td></tr>
     <tr><td><b>Mês 3</b></td><td>Fluxos de carrinho abandonado (D10) · iterar pelo GA4 limpo · meta: 0,48% → 1,5% de conversão</td></tr>
   </table>
@@ -73,7 +82,109 @@
   </table>
   </div>
 
-  <p style="margin-top:18px"><a class="btn" href="index.html">← Voltar ao protótipo</a></p>
+  <h2>6. Tudo que faremos, explicado de forma simples</h2>
+  <p style="font-size:14.5px;max-width:760px">Abaixo está o projeto completo em linguagem leiga, item por item. Nada aqui exige que você entenda de programação: cada tópico diz <b>o que muda, onde aparece e por que isso vende mais</b>.</p>
+
+  <h3 style="margin-top:18px">6.1. Página inicial (a vitrine da loja)</h3>
+  <ul style="font-size:14.5px;max-width:760px;line-height:1.7">
+    <li><b>Banners que abrem rápido e com botão:</b> as mesmas fotos de hoje, só que mais leves, com frase e botão (“Ver a coleção”) por cima. A cliente entende na hora onde clicar.</li>
+    <li><b>Faixa de confiança:</b> uma barrinha logo no topo com nota 4,9, troca grátis em 30 dias, 6x sem juros e frete grátis acima de R$ 799. Quem chega desconfiada se sente segura.</li>
+    <li><b>Compra pelo modelo:</b> em vez de procurar por nome de peça, a cliente escolhe Wide Leg, Skinny, Mom, Reta, Flare ou Pantalona — como ela mesma fala na loja física.</li>
+    <li><b>As mais amadas:</b> os produtos que mais vendem em destaque, com estrelinhas, quantidade de avaliações, preço e parcela. Nada de produto esgotado no topo.</li>
+    <li><b>Quem veste, aprova:</b> depoimentos reais de clientes com cidade e produto comprado.</li>
+    <li><b>Chamada para o outlet:</b> um bloco com os descontos e botão para a página de ofertas.</li>
+  </ul>
+
+  <h3 style="margin-top:18px">6.2. Vitrine / coleção (a arara da loja)</h3>
+  <ul style="font-size:14.5px;max-width:760px;line-height:1.7">
+    <li><b>Filtros simples:</b> botões por modelo (Mom, Reta…) e por tamanho (34 ao 44). A cliente toca e a vitrine filtra na hora, inclusive no celular.</li>
+    <li><b>Ordenação:</b> ela pode ver por menor preço, maior preço ou melhor avaliados.</li>
+    <li><b>Esgotado vai para o fim:</b> peça sem estoque nunca mais ocupa o começo da vitrine. No lugar do botão de comprar aparece “Avise-me quando chegar”.</li>
+    <li><b>Comprar sem sair da lista:</b> botão “Adicionar ao Carrinho” direto no cartão do produto, sem precisar abrir a página dele.</li>
+  </ul>
+
+  <h3 style="margin-top:18px">6.3. Página do produto (o provador)</h3>
+  <ul style="font-size:14.5px;max-width:760px;line-height:1.7">
+    <li><b>Avaliações no topo:</b> estrelas e número de opiniões logo abaixo do nome, com link para ler todas.</li>
+    <li><b>Preço completo:</b> valor à vista, parcela em 6x e desconto no Pix lado a lado — sem conta de cabeça.</li>
+    <li><b>Guia de medidas na própria página:</b> tabela de cintura, quadril e comprimento por tamanho, que abre ali mesmo, sem pular de tela. Inclui a dica “entre dois tamanhos, escolha o menor”.</li>
+    <li><b>Frete com CEP:</b> campo para digitar o CEP e ver prazo e valor antes de decidir — acaba a surpresa no caixa.</li>
+    <li><b>Selos de segurança:</b> loja segura, troca grátis, 6x sem juros e frete grátis, sempre visíveis.</li>
+    <li><b>Botão que acompanha:</b> ao rolar a página no celular, uma barrinha com foto, preço e botão “Comprar” acompanha a cliente.</li>
+    <li><b>Complete o look:</b> sugestão de blusa e regata que combinam, com botão para levar junto e opção de levar as 3 peças de uma vez.</li>
+    <li><b>Descrição organizada:</b> detalhes, tecido e cuidados, trocas e devoluções em abas que abrem e fecham.</li>
+  </ul>
+
+  <h3 style="margin-top:18px">6.4. Outlet (a liquidação)</h3>
+  <ul style="font-size:14.5px;max-width:760px;line-height:1.7">
+    <li><b>Desconto em destaque:</b> etiqueta com o percentual (−20% etc.) em cada peça, com preço antigo riscado.</li>
+    <li><b>Ordenar pelo maior desconto:</b> quem caça oferta vê primeiro o melhor negócio.</li>
+    <li><b>Contagem regressiva:</b> relógio mostrando quando a oferta termina — cria urgência honesta.</li>
+  </ul>
+
+  <h3 style="margin-top:18px">6.5. Carrinho (o caixa)</h3>
+  <ul style="font-size:14.5px;max-width:760px;line-height:1.7">
+    <li><b>Barra do frete grátis:</b> mostra quanto falta para ganhar frete grátis — incentiva a levar mais uma peça.</li>
+    <li><b>Sugestões no carrinho:</b> peças que combinam, com botão de adicionar em 1 toque.</li>
+    <li><b>Compra sem criar conta:</b> finalizar como convidada, com Pix, cartão em 6x e boleto. Menos cadastro, menos desistência.</li>
+    <li><b>WhatsApp sempre à mão:</b> botão flutuante para falar com a loja a qualquer momento.</li>
+  </ul>
+
+  <h3 style="margin-top:18px">6.6. Celular em primeiro lugar</h3>
+  <p style="font-size:14.5px;max-width:760px">A maioria das clientes entra pelo celular. Por isso tudo foi desenhado primeiro para telas pequenas: botões grandes, textos legíveis sem zoom, fotos que carregam rápido e nada quebrado em telas estreitas. Depois, a mesma loja se ajusta sozinha para tablet e computador.</p>
+
+  <h3 style="margin-top:18px">6.7. O trabalho invisível (bastidores)</h3>
+  <ul style="font-size:14.5px;max-width:760px;line-height:1.7">
+    <li><b>Loja de teste separada:</b> copiamos o tema atual para um rascunho e fazemos tudo lá. Sua loja no ar não muda nada até a hora de publicar.</li>
+    <li><b>Limpeza das estatísticas:</b> filtramos visitas de robôs e de outros países para os números do Google Analytics mostrarem clientes de verdade.</li>
+    <li><b>Google preservado:</b> os endereços atuais das coleções continuam funcionando com redirecionamento — você não perde posição nas buscas.</li>
+    <li><b>Velocidade:</b> fotos no tamanho certo para cada tela, para a loja abrir rápido no 4G.</li>
+  </ul>
+
+  <h2>7. Remarketing: o que sua cliente vai receber</h2>
+  <p style="font-size:14.5px;max-width:760px">Remarketing é a loja “ir atrás” de quem demonstrou interesse. Tudo automático, ligado à Shopify. Em linguagem simples, funciona assim:</p>
+  <ul style="font-size:14.5px;max-width:760px;line-height:1.7">
+    <li><b>Boas-vindas com 10% OFF:</b> quem deixa o e-mail no campo “Quero 10% OFF” recebe uma sequência de apresentação da marca, dos modelos e do cupom.</li>
+    <li><b>Lembrete de carrinho:</b> quem coloca peça no carrinho e sai sem comprar recebe um lembrete em menos de 1 hora, outro em 24h (com avaliações e condições) e um último em até 72h (com pequeno incentivo). Parte desses lembretes pode chegar por WhatsApp, que quase todo mundo abre.</li>
+    <li><b>Pós-compra:</b> depois da compra, a cliente recebe acompanhamento do pedido, dicas de cuidado com o jeans e convite para avaliar. A avaliação dela vira as estrelinhas do site.</li>
+    <li><b>Avise-me:</b> quem pediu aviso de um tamanho esgotado recebe mensagem automática quando ele volta ao estoque.</li>
+    <li><b>Retorno de sumidas:</b> quem comprou há muito tempo e sumiu recebe uma oferta para voltar.</li>
+  </ul>
+  <div class="proto-note"><b>Importante:</b> e-mails e mensagens só vão para quem autorizou (opt-in), com opção de sair a qualquer momento — exigência da lei (LGPD) e das operadoras. As mensalidades dessas ferramentas (ver item 9) são pagas direto aos fornecedores.</div>
+
+  <h2>8. O que precisamos de você (Scalon)</h2>
+  <ul style="font-size:14.5px;max-width:760px;line-height:1.7">
+    <li><b>Acessos:</b> usuário administrador da Shopify, do Google Analytics e das contas de e-mail/WhatsApp da loja.</li>
+    <li><b>Tabela de medidas por modelo:</b> cintura, quadril e comprimento do 34 ao 52 para Mom, Reta, Wide Leg e demais (vale a tabela atual de confecção).</li>
+    <li><b>Avaliações existentes:</b> prints ou textos de depoimentos recebidos por WhatsApp/e-mail para importarmos nos 10 produtos mais visitados.</li>
+    <li><b>Regras comerciais:</b> confirmar valor mínimo do frete grátis (hoje R$ 799), prazos por região, parcelamento e política de troca.</li>
+    <li><b>Aprovações:</b> validar textos dos banners, e-mails e mensagens do WhatsApp antes de publicarmos (enviamos tudo para revisão).</li>
+    <li><b>Uma pessoa de contato:</b> alguém da loja para tirar dúvidas rápidas durante a execução (medidas, estoque, preços).</li>
+  </ul>
+
+  <h2>9. Custos mensais das ferramentas (pagos aos fornecedores)</h2>
+  <p style="font-size:14.5px;max-width:760px">Estes valores <b>não</b> vão para a execução do projeto — são assinaturas das ferramentas, pagas direto a cada fornecedor, e podem ser ligadas por fase:</p>
+  <ul style="font-size:14.5px;max-width:760px;line-height:1.7">
+    <li><b>Plano Shopify:</b> mensalidade atual da loja (sem alteração).</li>
+    <li><b>E-mail marketing:</b> começa de graça (Shopify Email: 10 mil e-mails/mês; Klaviyo/Omnisend têm plano gratuito) e cresce conforme a lista — cerca de R$50 a R$350/mês nas faixas iniciais. Tabela completa em reais na planilha <code>comparativo_remarketing_shopify.xlsx</code>.</li>
+    <li><b>SMS/WhatsApp:</b> cobrados por mensagem enviada (centavos por envio) + taxa das operadoras/Meta. Só paga quem usa.</li>
+    <li><b>Avaliações (Judge.me):</b> plano gratuito atende o começo.</li>
+    <li><b>Calculadora de frete e avise-me:</b> apps da Shopify com planos gratuitos ou de baixo custo, conforme o escolhido.</li>
+  </ul>
+
+  <h2>10. Perguntas frequentes</h2>
+  <ul style="font-size:14.5px;max-width:760px;line-height:1.7">
+    <li><b>A loja vai sair do ar?</b> Não. Trabalhamos numa cópia e só publicamos quando tudo estiver aprovado.</li>
+    <li><b>Vou perder minha posição no Google?</b> Não. Os endereços atuais são preservados com redirecionamento.</li>
+    <li><b>Preciso trocar de tema ou de plataforma?</b> Não. Tudo é feito sobre o tema atual, sem comprar nada novo.</li>
+    <li><b>E se não der resultado?</b> As projeções são estimativas, sem garantia (ver aviso ao final). Por isso medimos a cada etapa no Analytics e ajustamos a rota — e o prazo mínimo de 90 dias pode se estender, se necessário.</li>
+    <li><b>Quem escreve os textos e e-mails?</b> Nós redigimos a primeira versão; você aprova antes de ir ao ar.</li>
+    <li><b>Depois de pronto, preciso pagar todo mês?</b> Só as ferramentas (item 9). Acompanhamento mensal de evolução é opcional e contratado à parte.</li>
+  </ul>
+
+  <div class="proto-note" style="margin-top:22px"><b>Aviso importante:</b> as mudanças e alterações apresentadas neste plano não têm resultado garantido — as projeções são estimativas. Os valores foram calculados conforme as melhores práticas do mercado, com o apoio de ferramentas avançadas de análise, avaliação e desenvolvimento.</div>
+
+  <p class="no-print" style="margin-top:18px"><a class="btn" href="index.html">← Voltar ao protótipo</a> <button class="btn ghost" onclick="window.print()" style="margin-left:8px">Imprimir plano</button></p>
 </div>
 
 <footer class="site"><div class="wrap">
